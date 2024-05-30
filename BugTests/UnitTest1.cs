@@ -109,6 +109,15 @@ public class UnitTest1
         bug.Assign();
         Assert.AreEqual(Bug.State.Assigned, bug.getState());
     }
+    
+    [TestMethod]
+    public void AcceptFixAndClose()
+    {
+        var bug = new Bug(Bug.State.CreatedFixes);
+        bug.AcceptFix();
+        bug.Close();
+        Assert.AreEqual(Bug.State.Closed, bug.getState());
+    }
 
     [TestMethod]
     public void AssignFromDeferedToAssigned()
@@ -118,12 +127,4 @@ public class UnitTest1
         Assert.AreEqual(Bug.State.Assigned, bug.getState());
     }
 
-    [TestMethod]
-    public void AcceptFixAndClose()
-    {
-        var bug = new Bug(Bug.State.CreatedFixes);
-        bug.AcceptFix();
-        bug.Close();
-        Assert.AreEqual(Bug.State.Closed, bug.getState());
-    }
 }
